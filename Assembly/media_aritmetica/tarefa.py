@@ -5,4 +5,10 @@ n4 = int(input('informe sua quarta nota: '))
 
 media = sum((n1, n2, n3, n4)) / 4
 
-print(f'a sua média é: {media:.2f}')
+if media >= 6:
+    print(f'Situação: APROVADO\nMedia: {media:.2f}')
+elif media >= 4 and media < 6:
+    print(f'Situação: RECUPERAÇÃO\nMedia: {media:.2f}')
+else:
+    print(f'Situação: REPROVADO\nMedia: {media:.2f}')
+

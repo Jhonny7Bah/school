@@ -11,8 +11,15 @@
 	.string	"Informe sua terceira nota: "
 .LC4:
 	.string	"Informe sua quarta nota: "
-.LC6:
-	.string	"A sua m\303\251dia \303\251: %.2f\n"
+	.align 8
+.LC7:
+	.string	"Situa\303\247\303\243o: APROVADO\nMedia: %.2f"
+	.align 8
+.LC9:
+	.string	"Situa\303\247\303\243o: RECUPERA\303\207\303\203O\nMedia: %.2f"
+	.align 8
+.LC10:
+	.string	"Situa\303\247\303\243o: REPROVADO\nMedia: %.2f"
 	.text
 	.globl	main
 	.type	main, @function
@@ -82,20 +89,50 @@ main:
 	divsd	%xmm1, %xmm0
 	cvtsd2ss	%xmm0, %xmm0
 	movss	%xmm0, -12(%rbp)
+	movss	-12(%rbp), %xmm0
+	comiss	.LC6(%rip), %xmm0
+	jbe	.L13
 	pxor	%xmm2, %xmm2
 	cvtss2sd	-12(%rbp), %xmm2
 	movq	%xmm2, %rax
 	movq	%rax, %xmm0
-	leaq	.LC6(%rip), %rax
+	leaq	.LC7(%rip), %rax
 	movq	%rax, %rdi
 	movl	$1, %eax
 	call	printf@PLT
+	jmp	.L4
+.L13:
+	movss	-12(%rbp), %xmm0
+	comiss	.LC8(%rip), %xmm0
+	jb	.L5
+	movss	.LC6(%rip), %xmm0
+	comiss	-12(%rbp), %xmm0
+	jbe	.L5
+	pxor	%xmm3, %xmm3
+	cvtss2sd	-12(%rbp), %xmm3
+	movq	%xmm3, %rax
+	movq	%rax, %xmm0
+	leaq	.LC9(%rip), %rax
+	movq	%rax, %rdi
+	movl	$1, %eax
+	call	printf@PLT
+	jmp	.L4
+.L5:
+	pxor	%xmm4, %xmm4
+	cvtss2sd	-12(%rbp), %xmm4
+	movq	%xmm4, %rax
+	movq	%rax, %xmm0
+	leaq	.LC10(%rip), %rax
+	movq	%rax, %rdi
+	movl	$1, %eax
+	call	printf@PLT
+.L4:
 	movl	$0, %eax
 	movq	-8(%rbp), %rdx
 	subq	%fs:40, %rdx
-	je	.L3
+	je	.L9
 	call	__stack_chk_fail@PLT
-.L3:
+.L9:
 	leave
 	.cfi_def_cfa 7, 8
 	ret
@@ -107,6 +144,12 @@ main:
 .LC5:
 	.long	0
 	.long	1074790400
+	.align 4
+.LC6:
+	.long	1086324736
+	.align 4
+.LC8:
+	.long	1082130432
 	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
