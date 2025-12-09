@@ -1,0 +1,60 @@
+# README — Código Python traduzido para C
+
+Este projeto demonstra a tradução de um código Python para C, mantendo a mesma lógica, comentários e estrutura. O objetivo é mostrar como estruturas básicas de programação se comportam nas duas linguagens.
+
+## Conteúdo do código
+
+O programa trabalha com:
+
+### Estruturas de repetição
+
+* `for` crescente
+* `for` decrescente
+* `while` crescente
+* `while` decrescente
+
+### Manipulação de listas
+
+* Inserção ao final (`append`)
+* Remoção do último elemento (`pop`)
+* Inserção no primeiro índice
+* Remoção do primeiro índice
+* Troca de valores entre posições
+
+### Variáveis
+
+* Endereçamento direto
+* Endereçamento indireto (atribuição entre variáveis)
+
+## Arquivos do projeto
+
+* `main.py` — código original em Python
+* `main.c` — versão traduzida para C
+* `main.s` — código assembly gerado pelo GCC
+
+## Como compilar
+
+```bash
+gcc main.c -o programa
+```
+
+Executar:
+
+```bash
+./programa
+```
+
+Gerar o assembly:
+
+```bash
+gcc -S main.c
+```
+
+## Objetivo
+
+Servir como material de estudo para comparação entre:
+
+* Python (alto nível)
+* C (médio nível)
+* Assembly (baixo nível)
+
