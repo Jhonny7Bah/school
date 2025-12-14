@@ -24,17 +24,20 @@ print(lista1)
 lista1.append(10) # adicionando 10 ao final da lista
 
 # pop
-print(lista1)
-lista1.pop() # removendo o ultimo item da fila
-print(lista1)
+lista2 = [1,2,3,4,5,6,7,8,9]
+print(lista2)
+lista2.pop() # removendo o ultimo item da fila
+print(lista2)
 
 # adicionando um valor no primeiro indice
-lista1.insert(0, 50)
-print(lista1)
+lista3 = [1,2,3,4,5,6,7,8,9]
+lista3.insert(0, 50)
+print(lista3)
 
 # removendo valor do primeiro indice
-lista1.pop(0)
-print(lista1)
+lista4 = [1,2,3,4,5,6,7,8,9]
+lista4.pop(0)
+print(lista4)
 
 # enderecamento direto
 idade = 14
@@ -47,7 +50,8 @@ c = a
 print(c)
 
 # trocar indices de uma lista
-lista2 = [50, 40, 30, 20, 10]
-print(lista2)
-lista2[3], lista2[4] = lista2[4], lista2[3] #trocando indice 3 e 4
-print(lista2) 
+lista5 = [1,2,3,4,5,6,7,8,9]
+lista5 = [50, 40, 30, 20, 10]
+print(lista5)
+lista5[3], lista5[4] = lista5[4], lista5[3] #trocando indice 3 e 4
+print(lista5) 
